@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ООО «Олимп» — Монтаж пожарной сигнализации и электромонтажные работы</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#12100d;
+  --panel:#1e1a14;
+  --panel-light:#262017;
+  --gold:#c8a24a;
+  --gold-bright:#ffd700;
+  --gold-dim:#8a6f2f;
+  --text:#e8dcc3;
+  --muted:#a49577;
+  --accent:#9e2b25;
+  --border:#5c4a26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(200,162,74,.08), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.15) 0 2px, transparent 2px 4px);
+  color:var(--text);
+  font-family:'Alegreya Sans',Arial,sans-serif;
+  font-size:17px;
+  line-height:1.55;
+}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.panel-title,nav a,.btn{
+  font-family:'Cinzel',Georgia,serif;
+}
+h2{
+  text-align:center;color:var(--gold-bright);
+  font-size:30px;letter-spacing:2px;text-transform:uppercase;
+  margin:56px 0 8px;
+}
+h2::after{
+  content:"";display:block;width:180px;height:2px;margin:10px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:28px;font-style:italic}
+
+/* ===== Шапка ===== */
+header{
+  background:linear-gradient(180deg,#0b0a08,#1a1610);
+  border-bottom:2px solid var(--border);
+  padding:14px 0;
+  position:sticky;top:0;z-index:100;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .emblem{
+  width:48px;height:48px;border:2px solid var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:24px;background:radial-gradient(circle,#3a2e14,#0d0b08);
+  box-shadow:0 0 12px rgba(200,162,74,.4);
+}
+.logo-name{font-family:'Cinzel',serif;font-weight:900;font-size:22px;color:var(--gold-bright);letter-spacing:2px}
+.logo-sub{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{
+  color:var(--text);text-decoration:none;font-size:14px;letter-spacing:1px;
+  text-transform:uppercase;padding:6px 2px;border-bottom:1px solid transparent;
+  transition:.2s;
+}
+nav a:hover{color:var(--gold-bright);border-bottom-color:var(--gold)}
+.header-phone{color:var(--gold-bright);font-weight:700;text-decoration:none;white-space:nowrap}
+
+/* ===== Герой ===== */
+.hero{
+  text-align:center;padding:90px 20px 70px;
+  background:
+    linear-gradient(180deg, rgba(18,16,13,.55), rgba(18,16,13,.92) 80%),
+    radial-gradient(ellipse at 50% 120%, rgba(255,120,30,.18), transparent 55%);
+}
+.hero h1{
+  font-size:42px;color:var(--gold-bright);letter-spacing:3px;
+  text-shadow:0 0 24px rgba(255,215,0,.25);text-transform:uppercase;line-height:1.2;
+}
+.hero p{max-width:640px;margin:18px auto 30px;color:var(--text);font-size:19px}
+.hero .rune{color:var(--gold);letter-spacing:6px;font-size:14px;margin-bottom:14px}
+
+.btn{
+  display:inline-block;padding:14px 34px;font-weight:700;font-size:15px;
+  letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer;
+  background:linear-gradient(180deg,#5a4a1c,#8a6f2f 45%,#5a4a1c);
+  color:#ffe9a8;border:1px solid #a3862f;border-radius:4px;
+  box-shadow:0 0 14px rgba(200,162,74,.25), inset 0 1px 0 rgba(255,255,255,.15);
+  transition:.2s;
+}
+.btn:hover{filter:brightness(1.2);box-shadow:0 0 22px rgba(255,215,0,.4)}
+.btn-red{
+  background:linear-gradient(180deg,#6b1f1a,#9e2b25 45%,#6b1f1a);
+  border-color:#b3403a;color:#ffd9d6;
+}
+
+/* ===== Панели ===== */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 4px 18px rgba(0,0,0,.5), inset 0 0 40px rgba(0,0,0,.35);
+  position:relative;
+}
+.panel::before{
+  content:"";position:absolute;inset:5px;border:1px solid rgba(200,162,74,.25);
+  border-radius:3px;pointer-events:none;
+}
+.panel-title{
+  color:var(--gold);font-size:16px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:16px;
+  padding-bottom:8px;border-bottom:1px solid rgba(200,162,74,.3);
+}
+
+/* ===== Услуги ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.service h3{color:var(--gold-bright);font-size:18px;margin-bottom:10px;letter-spacing:1px}
+.service .icon{font-size:32px;margin-bottom:10px}
+.service p{color:var(--muted);font-size:15px}
+
+/* ===== Калькулятор ===== */
+.row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.label{min-width:170px;white-space:nowrap;font-size:15px}
+input[type="text"],input[type="number"]{
+  background:#0d0b08;color:var(--text);
+  border:1px solid #6a5527;border-radius:4px;
+  padding:8px 10px;font-size:15px;width:110px;font-family:inherit;
+}
+input:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 8px rgba(200,162,74,.3)}
+select{
+  background:#0d0b08;color:var(--text);border:1px solid #6a5527;
+  border-radius:4px;padding:8px;font-size:15px;font-family:inherit;
+}
+.btn-sm{
+  background:linear-gradient(180deg,#5a4a1c,#8a6f2f);color:#ffe9a8;
+  border:1px solid #a3862f;border-radius:4px;padding:8px 16px;
+  font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;
+}
+.btn-sm:hover{filter:brightness(1.2)}
+.btn-sm.red{background:linear-gradient(180deg,#6b1f1a,#9e2b25);border-color:#b3403a}
+.values-list{word-wrap:break-word;color:var(--muted);font-size:14px;margin:8px 0}
+.total-row{
+  display:flex;justify-content:space-between;font-weight:700;
+  color:var(--gold-bright);margin-top:12px;padding-top:8px;
+  border-top:1px dashed rgba(200,162,74,.3);font-size:16px;
+}
+.checkbox-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:14px}
+.checkbox-item{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:15px}
+.result{
+  background:linear-gradient(180deg,#2b2214,#1e1a14);
+  border:1px solid var(--gold);border-radius:6px;padding:20px;margin-top:20px;
+  box-shadow:0 0 24px rgba(200,162,74,.2);
+}
+.amount{font-size:26px;font-weight:700;color:var(--gold-bright);display:block;margin-top:4px}
+.vat-info{font-size:13px;color:var(--muted);margin-top:6px}
+.copy-msg{color:var(--gold-bright);font-weight:700;display:none;margin-top:8px;font-family:'Cinzel',serif}
+.copy-btn{
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  padding:10px 20px;cursor:pointer;border-radius:4px;font-size:14px;margin-top:14px;
+  font-family:'Cinzel',serif;letter-spacing:1px;transition:.2s;
+}
+.copy-btn:hover{background:var(--gold);color:#000}
+
+/* ===== Преимущества ===== */
+.adv{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:8px}
+.adv-item{text-align:center;padding:18px 14px}
+.adv-item .num{
+  font-family:'Cinzel',serif;font-size:34px;color:var(--gold-bright);
+  font-weight:900;text-shadow:0 0 14px rgba(255,215,0,.3);
+}
+.adv-item .cap{color:var(--muted);font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* ===== Контакты ===== */
+.contact-row{display:flex;gap:40px;flex-wrap:wrap}
+.contact-col{flex:1;min-width:260px}
+.contact-col a{color:var(--gold-bright);text-decoration:none;font-weight:700}
+.contact-col p{margin:6px 0}
+
+form .row .label{min-width:150px}
+form input[type="text"],form input[type="tel"]{width:100%;max-width:380px}
+textarea{width:100%;max-width:380px;background:#0d0b08;color:var(--text);
+  border:1px solid #6a5527;border-radius:4px;padding:10px;font-family:inherit;font-size:15px;min-height:90px}
+
+footer{
+  margin-top:60px;border-top:2px solid var(--border);
+  background:#0b0a08;padding:24px 0;text-align:center;
+  color:var(--muted);font-size:13px;
+}
+footer .rune{color:var(--gold);letter-spacing:8px;margin-bottom:8px}
+
+@media(max-width:640px){
+  .hero h1{font-size:28px}
+  h2{font-size:22px}
+  nav{justify-content:center}
+  .label{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="emblem">🛡</div>
+      <div>
+        <div class="logo-name">ОЛИМП</div>
+        <div class="logo-sub">Пожарная сигнализация · Электромонтаж</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="header-phone" href="tel:+79000000000">+7 (900) 000-00-00</a>
+  </div>
+</header>
+
+<!-- ГЕРОЙ -->
+<section class="hero">
+  <div class="rune">✦ ⚔ ✦</div>
+  <h1>Огню — преграда.<br>Дому — защита.</h1>
+  <p>ООО «Олимп» — монтаж и обслуживание систем пожарной сигнализации, огнезащита объектов и полный комплекс электромонтажных работ. Работаем по Томску и Томской области.</p>
+  <a href="#calc" class="btn">Рассчитать стоимость</a>
+  &nbsp;
+  <a href="#contacts" class="btn btn-red">Вызвать замерщика</a>
+</section>
+
+<!-- УСЛУГИ -->
+<section id="services">
+  <div class="container">
+    <h2>Наши услуги</h2>
+    <p class="subtitle">Путь от заявки до защищённого объекта</p>
+    <div class="grid">
+      <div class="panel service">
+        <div class="icon">🔥</div>
+        <h3>Пожарная сигнализация</h3>
+        <p>Проектирование, монтаж и пусконаладка АПС и СОУЭ для офисов, складов, производств и социальных объектов. Под ключ, с документацией.</p>
+      </div>
+      <div class="panel service">
+        <div class="icon">⚡</div>
+        <h3>Электромонтажные работы</h3>
+        <p>Электрощиты, освещение, силовые линии, слаботочные сети. Соблюдение ПУЭ и ПТЭЭП, замеры сопротивления изоляции.</p>
+      </div>
+      <div class="panel service">
+        <div class="icon">📜</div>
+        <h3>Проектирование и лицензия</h3>
+        <p>Разработка рабочей документации, прохождение экспертизы и оформление лицензии МЧС. Берём все согласования на себя.</p>
+      </div>
+      <div class="panel service">
+        <div class="icon">🔧</div>
+        <h3>Обслуживание систем</h3>
+        <p>Регламентное ТО пожарной сигнализации, ремонт и модернизация существующих систем, замена устаревших приборов.</p>
+      </div>
+      <div class="panel service">
+        <div class="icon">💧</div>
+        <h3>Системы пожаротушения</h3>
+        <p>Монтаж водяного, газового и порошкового пожаротушения, датчики пламени и тепловые извещатели.</p>
+      </div>
+      <div class="panel service">
+        <div class="icon">📹</div>
+        <h3>Видеонаблюдение и СКУД</h3>
+        <p>Камеры, домофоны, контроль доступа и интеграция с пожарной сигнализацией в единую диспетчеризацию.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<section id="about">
+  <div class="container">
+    <h2>Почему «Олимп»</h2>
+    <p class="subtitle">Гильдия, которой доверяют</p>
+    <div class="panel">
+      <div class="adv">
+        <div class="adv-item"><div class="num">12+</div><div class="cap">лет на рынке</div></div>
+        <div class="adv-item"><div class="num">500+</div><div class="cap">объектов под ключ</div></div>
+        <div class="adv-item"><div class="num">24/7</div><div class="cap">сервисная поддержка</div></div>
+        <div class="adv-item"><div class="num">3 года</div><div class="cap">гарантия на монтаж</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section id="calc">
+  <div class="container">
+    <h2>Калькулятор сметы</h2>
+    <p class="subtitle">Соберите заказ — как снаряжение перед рейдом</p>
+
+    <div class="panel">
+      <div class="panel-title">Настройки расчёта</div>
+      <div class="row">
+        <span class="label">Запас материалов (%)</span>
+        <input type="number" id="sparePercent" value="10" min="0" max="100" style="width:80px">
+        <span style="font-size:13px;color:var(--muted)">(применяется к датчикам и кабелю)</span>
+      </div>
+      <div class="row">
+        <span class="label">НДС</span>
+        <select id="vatOption">
+          <option value="0">Без НДС</option>
+          <option value="5">С НДС 5%</option>
+          <option value="20">С НДС 20%</option>
+          <option value="22" selected>С НДС 22%</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Датчики</div>
+      <div class="row">
+        <span class="label">Наименование</span>
+        <input type="text" id="sensorName" value="Датчики пожарные ИП 212-141" style="max-width:340px">
+      </div>
+      <div class="row">
+        <span class="label">Количество (шт):</span>
+        <input type="number" id="sensorInput" placeholder="0">
+        <button class="btn-sm" type="button" onclick="addSensor()">+</button>
+        <button class="btn-sm red" type="button" onclick="clearSensors()">Стереть</button>
+      </div>
+      <div class="row">
+        <span class="label">Цена за шт (₽):</span>
+        <input type="number" id="sensorPrice" placeholder="0">
+      </div>
+      <div class="total-row">Итого (с запасом): <span id="sensorTotalCount">0</span> шт</div>
+      <div class="values-list" id="sensorValuesList">Введённые значения: -</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Кабель</div>
+      <div class="row">
+        <span class="label">Наименование</span>
+        <input type="text" id="cableName" value="Кабель ВВГнг-LS" style="max-width:340px">
+      </div>
+      <div class="row">
+        <span class="label">Длина (м):</span>
+        <input type="number" id="cableInput" placeholder="0">
+        <button class="btn-sm" type="button" onclick="addCable()">+</button>
+        <button class="btn-sm red" type="button" onclick="clearCable()">Стереть</button>
+      </div>
+      <div class="row">
+        <span class="label">Цена за метр (₽):</span>
+        <input type="number" id="cablePrice" placeholder="0">
+      </div>
+      <div class="total-row">Итого (с запасом): <span id="cableTotalLength">0</span> м</div>
+      <div class="values-list" id="cableValuesList">Введённые значения: -</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Приборы и оборудование</div>
+      <div class="row">
+        <span class="label">1 уровень — цена (₽):</span>
+        <input type="number" id="p1" placeholder="0">
+        <span class="label">кол-во:</span>
+        <input type="number" id="q1" placeholder="0">
+        <span>→ <span id="t1">0 ₽</span></span>
+      </div>
+      <div class="row">
+        <span class="label">2 уровень — цена (₽):</span>
+        <input type="number" id="p2" placeholder="0">
+        <span class="label">кол-во:</span>
+        <input type="number" id="q2" placeholder="0">
+        <span>→ <span id="t2">0 ₽</span></span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Налоги, лицензия и доп. расходы</div>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox" id="tax6"> Налог 6%</label>
+        <label class="checkbox-item"><input type="checkbox" id="lic20"> Лицензия 20%</label>
+        <label class="checkbox-item"><input type="checkbox" id="cashout"> Обналичка (+20%)</label>
+      </div>
+      <div class="row">
+        <span class="label">Пусконаладка (%):</span>
+        <select id="commission">
+          <option value="0">0%</option><option value="5">5%</option><option value="10">10%</option>
+          <option value="15">15%</option><option value="20">20%</option><option value="30">30%</option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="label">Командировочные (₽/чел/день):</span>
+        <input type="number" id="travelRate" placeholder="0">
+        <span class="label">чел:</span>
+        <input type="number" id="travelPeople" placeholder="0">
+        <span class="label">дней:</span>
+        <input type="number" id="travelDays" placeholder="0">
+      </div>
+      <div class="total-row">Итого командировочные: <span id="travelTotal">0 ₽</span></div>
+      <div class="row" style="margin-top:10px">
+        <span class="label">Аренда квартиры (₽/сутки):</span>
+        <input type="number" id="rentRate" placeholder="0">
+        <span class="label">суток:</span>
+        <input type="number" id="rentDays" placeholder="0">
+      </div>
+      <div class="total-row">Итого аренда: <span id="rentTotal">0 ₽</span></div>
+    </div>
+
+    <button type="button" class="btn" style="width:100%" onclick="calculate()">Рассчитать общую сумму</button>
+
+    <div class="result">
+      <div>Общая сумма (база): <span id="baseTotal" class="amount">0 ₽</span></div>
+      <div>Итого с налогами и надбавками: <span id="finalTotal" class="amount">0 ₽</span></div>
+      <div class="vat-info" id="vatInfo"></div>
+      <button type="button" class="copy-btn" onclick="copyEstimate()">Копировать смету для КП</button>
+      <div class="copy-msg" id="clipboardMsg">Скопировано!</div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts">
+  <div class="container">
+    <h2>Контакты</h2>
+    <p class="subtitle">Гонец уже готов отправиться к нам</p>
+    <div class="panel">
+      <div class="contact-row">
+        <div class="contact-col">
+          <div class="panel-title">ООО «Олимп»</div>
+          <p>📍 г. Томск, Томская область</p>
+          <p>📞 <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+          <p>✉ <a href="mailto:info@olimp-tsk.ru">info@olimp-tsk.ru</a></p>
+          <p>🕘 Пн–Пт: 9:00–18:00</p>
+          <p>Лицензия МЧС · Члены СРО</p>
+        </div>
+        <div class="contact-col">
+          <div class="panel-title">Заявка на замер</div>
+          <form onsubmit="sendLead(event)">
+            <div class="row"><span class="label">Ваше имя:</span><input type="text" id="leadName" required></div>
+            <div class="row"><span class="label">Телефон:</span><input type="tel" id="leadPhone" required></div>
+            <div class="row"><span class="label">Объект и задача:</span></div>
+            <textarea id="leadMsg" placeholder="Например: офис 200 м², нужна сигнализация и 2 щита"></textarea>
+            <button class="btn" type="submit" style="margin-top:10px">Отправить гонца</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="rune">✦ ⚔ ✦</div>
+  ООО «Олимп» — пожарная сигнализация и электромонтажные работы<br>
+  © 2026. Все права защищены. Огонь — только в камине.
+</footer>
+
+<script>
+let sensorValues = [], cableValues = [];
+
+const num = id => parseFloat(document.getElementById(id).value) || 0;
+
+function addSensor(){
+  const v = num('sensorInput');
+  if (v <= 0) return alert('Введите положительное число');
+  sensorValues.push(v);
+  document.getElementById('sensorInput').value = '';
+  updateDisplays();
+}
+function clearSensors(){ sensorValues = []; updateDisplays(); }
+
+function addCable(){
+  const v = num('cableInput');
+  if (v <= 0) return alert('Введите положительное число');
+  cableValues.push(v);
+  document.getElementById('cableInput').value = '';
+  updateDisplays();
+}
+function clearCable(){ cableValues = []; updateDisplays(); }
+
+function spareFactor(){ return 1 + (num('sparePercent') / 100); }
+
+function updateDisplays(){
+  const f = spareFactor();
+  const s = sensorValues.reduce((a,v)=>a+v,0) * f;
+  const c = cableValues.reduce((a,v)=>a+v,0) * f;
+  document.getElementById('sensorTotalCount').textContent = Math.ceil(s).toLocaleString('ru-RU');
+  document.getElementById('cableTotalLength').textContent = Math.ceil(c).toLocaleString('ru-RU');
+  document.getElementById('sensorValuesList').textContent =
+    'Введённые значения: ' + (sensorValues.length ? sensorValues.join(', ') : '-');
+  document.getElementById('cableValuesList').textContent =
+    'Введённые значения: ' + (cableValues.length ? cableValues.join(', ') : '-');
+}
+
+function calculate(){
+  const f = spareFactor();
+  const t1 = num('p1') * num('q1');
+  const t2 = num('p2') * num('q2');
+  const sensorCost = sensorValues.reduce((a,v)=>a+v,0) * f * num('sensorPrice');
+  const cableCost  = cableValues.reduce((a,v)=>a+v,0) * f * num('cablePrice');
+  const travel = num('travelRate') * num('travelPeople') * num('travelDays');
+  const rent   = num('rentRate') * num('rentDays');
+
+  document.getElementById('t1').textContent = fmt(t1);
+  document.getElementById('t2').textContent = fmt(t2);
+  document.getElementById('travelTotal').textContent = fmt(travel);
+  document.getElementById('rentTotal').textContent = fmt(rent);
+
+  const base = t1 + t2 + sensorCost + cableCost + travel + rent;
+
+  const tax = document.getElementById('tax6').checked ? base*0.06 : 0;
+  const lic = document.getElementById('lic20').checked ? base*0.20 : 0;
+  const com = base * (num('commission')/100);
+  const subtotal = base + tax + lic + com;
+  const extra = document.getElementById('cashout').checked ? subtotal*0.20 : 0;
+  let fin = subtotal + extra;
+
+  const vatPct = num('vatOption');
+  const vat = fin * vatPct/100;
+  fin += vat;
+
+  document.getElementById('baseTotal').textContent = fmt(base);
+  document.getElementById('finalTotal').textContent = fmt(fin);
+  document.getElementById('vatInfo').textContent =
+    vatPct > 0 ? 'В том числе НДС ' + vatPct + '%: ' + fmt(vat) : 'НДС не учтён';
+
+  window.lastEstimate = {
+    date: new Date().toLocaleDateString('ru-RU'),
+    sensorName: document.getElementById('sensorName').value || 'Датчики',
+    cableName: document.getElementById('cableName').value || 'Кабель',
+    sensorValues:[...sensorValues], cableValues:[...cableValues],
+    spare: num('sparePercent'), sensorQty: Math.ceil(sensorValues.reduce((a,v)=>a+v,0)*f),
+    cableQty: Math.ceil(cableValues.reduce((a,v)=>a+v,0)*f),
+    sensorCost, cableCost, t1, t2, travel, rent,
+    tax, lic, com, extra, vatPct, vat, base, fin
+  };
+}
+
+const fmt = n => n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' ₽';
+
+function copyEstimate(){
+  if (!window.lastEstimate) return alert('Сначала нажмите «Рассчитать общую сумму»');
+  const d = window.lastEstimate, L = [];
+  L.push('СМЕТА РАСЧЁТ СТОИМОСТИ — ООО «ОЛИМП»');
+  L.push('Дата: ' + d.date);
+  L.push('─'.repeat(44)); L.push('');
+  if (d.sensorValues.length){
+    L.push('1. ' + d.sensorName + ': ' + d.sensorValues.join(', ') + ' шт');
+    L.push('   С запасом ' + d.spare + '%: ' + d.sensorQty + ' шт — ' + fmt(d.sensorCost));
+  }
+  if (d.cableValues.length){
+    L.push('2. ' + d.cableName + ': ' + d.cableValues.join(', ') + ' м');
+    L.push('   С запасом ' + d.spare + '%: ' + d.cableQty + ' м — ' + fmt(d.cableCost));
+  }
+  if (d.t1 > 0) L.push('3. Приборы 1 уровня: ' + fmt(d.t1));
+  if (d.t2 > 0) L.push('4. Приборы 2 уровня: ' + fmt(d.t2));
+  if (d.travel > 0) L.push('5. Командировочные: ' + fmt(d.travel));
+  if (d.rent > 0) L.push('6. Аренда квартиры: ' + fmt(d.rent));
+  L.push('─'.repeat(44));
+  L.push('База: ' + fmt(d.base));
+  if (d.tax > 0) L.push('+ Налог 6%: ' + fmt(d.tax));
+  if (d.lic > 0) L.push('+ Лицензия 20%: ' + fmt(d.lic));
+  if (d.com > 0) L.push('+ Пусконаладка: ' + fmt(d.com));
+  if (d.extra > 0) L.push('+ Обналичка 20%: ' + fmt(d.extra));
+  if (d.vat > 0) L.push('+ НДС ' + d.vatPct + '%: ' + fmt(d.vat));
+  L.push('');
+  L.push('ИТОГО: ' + fmt(d.fin));
+  const text = L.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showMsg).catch(()=>fallbackCopy(text));
+  } else fallbackCopy(text);
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); showMsg(); }
+  catch(e){ alert('Не удалось скопировать. Выделите текст вручную:\n\n' + text); }
+  document.body.removeChild(ta);
+}
+function showMsg(){
+  const m = document.getElementById('clipboardMsg');
+  m.style.display='block'; setTimeout(()=>m.style.display='none',2500);
+}
+function sendLead(e){
+  e.preventDefault();
+  alert('Заявка принята! Мы свяжемся с вами в ближайшее время. ⚔');
+  e.target.reset();
+}
+document.getElementById('sparePercent').addEventListener('input', updateDisplays);
+</script>
+</body>
+</html>
